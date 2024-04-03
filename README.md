@@ -37,7 +37,7 @@ attempt to make it a bit easier.
 git clone git@github.com:Niklan/Docker4DrupalContrib.git pathauto
 cd pathauto
 git clone git@git.drupal.org:project/pathauto.git project
-sed -i 's/DRUPAL_PROJECT_NAME=/DRUPAL_PROJECT_NAME=pathauto/g' .env
+# Note: this will also affects 'DRUPAL_PROJECT_NAME' which is expected.
 sed -i 's/PROJECT_NAME=/PROJECT_NAME=pathauto/g' .env
 docker compose up -d
 docker compose exec php bash
