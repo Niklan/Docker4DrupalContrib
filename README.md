@@ -40,6 +40,13 @@ git clone git@git.drupal.org:project/pathauto.git project
 sed -i 's/DRUPAL_PROJECT_NAME=/DRUPAL_PROJECT_NAME=pathauto/g' .env
 sed -i 's/PROJECT_NAME=/PROJECT_NAME=pathauto/g' .env
 docker compose up -d
+docker compose exec php bash
+# Navigate into module dir.
+dcd pathauto
+# Run PHPCS
+drupalcs .
+# Run PHPUnit
+dunit .
 ```
 
 ## FAQ
