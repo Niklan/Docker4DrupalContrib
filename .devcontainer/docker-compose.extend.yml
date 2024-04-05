@@ -1,0 +1,21 @@
+services:
+  workspace:
+    image: $PROJECT_NAME/workspace:$PHP_TAG
+    build:
+      context: ./var/docker/php
+      target: workspace
+      args:
+        PHP_TAG: $PHP_TAG
+    container_name: "${PROJECT_NAME}_workspace"
+    user: wodby
+    environment:
+      # PHPUnit Drupal testing configurations
+      SIMPLETEST_BASE_URL: "http://nginx"
+      SIMPLETEST_DB: "sqlite://localhost//mnt/files/test.sqlite"
+      MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'
+    volumes:
+      - drupal:/var/www/html:cached
+      - project:/var/www/project:cached
+      - ".devcontainer/phpactor.json:/home/wodby/.config/phpactor/phpactor.json"
+    depends_on:
+      - php

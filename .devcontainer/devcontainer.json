@@ -1,0 +1,29 @@
+{
+	"name": "Drupal Contrib Workspace",
+	"dockerComposeFile": ["../docker-compose.yml", "./docker-compose.extend.yml"],
+	"service": "workspace",
+	"workspaceFolder": "/var/www/project",
+	"shutdownAction": "stopCompose",
+	"containerUser": "wodby",
+	"remoteUser": "wodby",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"phpactor.vscode-phpactor",
+				"ecmel.vscode-html-css",
+				"ms-azuretools.vscode-docker",
+				"xdebug.php-debug",
+				"emallin.phpunit",
+				"cweijan.vscode-database-client2",
+				"eamodio.gitlens",
+				"mblode.twig-language"
+			],
+			"settings": {
+				"phpactor.path": "/usr/bin/phpactor",
+				"phpactor.launchServerArgs": [
+				    "--working-dir=/var/www/html"
+				]
+			}
+		}
+	}
+}

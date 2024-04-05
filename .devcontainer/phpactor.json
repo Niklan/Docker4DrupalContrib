@@ -1,0 +1,24 @@
+{
+    "$schema": "/phpactor.schema.json",
+    "language_server_phpstan.enabled": true,
+    "language_server_phpstan.config": "%project_root%\/config\/phpstan.neon",
+    "php_code_sniffer.enabled": false,
+    "prophecy.enabled": true,
+    "symfony.enabled": true,
+    "phpunit.enabled": true,
+    "indexer.supported_extensions": [
+        "php",
+        "inc",
+        "module",
+        "install",
+        "theme"
+    ],
+    "indexer.include_patterns": [
+        "/**/*.php",
+        "/**/*.inc",
+        "/**/*.module",
+        "/**/*.install",
+        "/**/*.theme"
+    ],
+    "code_transform.indentation": "  "
+}

@@ -17,6 +17,7 @@ services:
     image: $PROJECT_NAME/php:$PHP_TAG
     build:
       context: ./var/docker/php
+      target: drupal
       args:
         PHP_TAG: $PHP_TAG
     container_name: "${PROJECT_NAME}_php"
@@ -32,8 +33,6 @@ services:
     volumes:
       - drupal:/var/www/html:cached
       - project:/var/www/project:cached
-    tmpfs:
-      - /tmpfs
 
   crond:
     image: wodby/drupal-php:$PHP_TAG
@@ -121,3 +120,4 @@ volumes:
       type: none
       device: ${PWD}/project
       o: bind
+
