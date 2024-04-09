@@ -13,7 +13,7 @@ if (isset($composer_project['require-dev']['drupal/core'])) {
 }
 
 $composer_result = merge_deep($composer_default, $composer_project);
-$composer_result['scripts']['post-install-cmd'][] = 'ln -fs /var/www/html/project /var/www/html/web/modules/project';
+$composer_result['scripts']['post-update-cmd'][] = 'ln -fs /var/www/html/project /var/www/html/web/modules/project';
 
 $composer_result = \array_filter($composer_result);
 file_put_contents(
