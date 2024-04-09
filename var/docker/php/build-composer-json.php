@@ -49,6 +49,11 @@ function default_composer(): array {
     ],
     'minimum-stability' => 'dev',
     'prefer-stable' => TRUE,
+    'scripts' => [
+      'post-install-cmd' => [
+        'ln -fs ../../../../project web/modules/custom/project',
+      ]
+    ],
     'config' => [
       'process-timeout' => 36000,
       'allow-plugins' => [

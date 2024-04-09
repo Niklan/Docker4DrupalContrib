@@ -24,7 +24,7 @@ RUN echo source $HOME/.drupal.complete.sh >> $HOME/.bash_completion
 FROM base AS drupal
 COPY prepare-environment.sh /docker-entrypoint-init.d/
 
-FROM base AS workspace
+FROM drupal AS workspace
 USER root
 RUN apk --no-cache add curl
 RUN curl -Lo phpactor.phar https://github.com/phpactor/phpactor/releases/latest/download/phpactor.phar

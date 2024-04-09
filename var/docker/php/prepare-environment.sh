@@ -4,11 +4,8 @@ set -eo pipefail
 
 # Clean previous installation.
 cd $APP_ROOT
-rm -rf ./* ./.*
+find . -mindepth 1 -not -path "./project*" -not -path "./composer.json" -depth -delete
 
 touch composer.json
 build-composer-json
 composer -n install
-
-mkdir -p $APP_ROOT/web/modules/custom
-ln -fs $DRUPAL_PROJECT_PATH $APP_ROOT/web/modules/custom/$DRUPAL_PROJECT_NAME

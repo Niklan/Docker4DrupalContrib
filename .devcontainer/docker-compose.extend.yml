@@ -15,7 +15,7 @@ services:
       MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'
     volumes:
       - drupal:/var/www/html:cached
-      - project:/var/www/project:cached
+      - project:/var/www/html/project:cached
       - ".devcontainer/phpactor.json:/home/wodby/.config/phpactor/phpactor.json"
     depends_on:
       - php

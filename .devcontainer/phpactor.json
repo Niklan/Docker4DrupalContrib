@@ -1,7 +1,6 @@
 {
     "$schema": "/phpactor.schema.json",
     "language_server_phpstan.enabled": true,
-    "language_server_phpstan.config": "%project_root%\/config\/phpstan.neon",
     "php_code_sniffer.enabled": false,
     "prophecy.enabled": true,
     "symfony.enabled": true,
@@ -19,6 +18,15 @@
         "/**/*.module",
         "/**/*.install",
         "/**/*.theme"
+    ],
+    "indexer.exclude_patterns": [
+        "\/vendor\/**\/Tests\/**\/*",
+        "\/vendor\/**\/tests\/**\/*",
+        "\/vendor\/composer\/**\/*",
+        "**\/project\/**\/*"
+    ],
+    "indexer.stub_paths": [
+        "/var/www/html"
     ],
     "code_transform.indentation": "  "
 }
