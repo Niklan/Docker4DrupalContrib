@@ -13,6 +13,8 @@ if (isset($composer_project['require-dev']['drupal/core'])) {
 }
 
 $composer_result = merge_deep($composer_default, $composer_project);
+$composer_result['scripts']['post-install-cmd'][] = 'ln -fs /var/www/html/project /var/www/html/web/modules/project';
+
 $composer_result = \array_filter($composer_result);
 file_put_contents(
   filename: getenv('APP_ROOT') . '/composer.json',
@@ -49,11 +51,6 @@ function default_composer(): array {
     ],
     'minimum-stability' => 'dev',
     'prefer-stable' => TRUE,
-    'scripts' => [
-      'post-install-cmd' => [
-        'ln -fs ../../../../project web/modules/custom/project',
-      ]
-    ],
     'config' => [
       'process-timeout' => 36000,
       'allow-plugins' => [

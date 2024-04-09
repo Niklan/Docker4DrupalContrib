@@ -32,7 +32,7 @@ services:
       MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'
     volumes:
       - drupal:/var/www/html:cached
-      - project:/var/www/project:cached
+      - project:/var/www/html/project:cached
 
   crond:
     image: wodby/drupal-php:$PHP_TAG
@@ -41,7 +41,7 @@ services:
       CRONTAB: "0 * * * * drush -r /var/www/html/web cron"
     command: sudo -E LD_PRELOAD=/usr/lib/preloadable_libiconv.so crond -f -d 0
     volumes:
-    - drupal:/var/www/html:cached
+      - drupal:/var/www/html:cached
 
   nginx:
     image: wodby/nginx:$NGINX_TAG
@@ -70,8 +70,8 @@ services:
     image: mailhog/mailhog
     container_name: "${PROJECT_NAME}_mailhog"
     labels:
-    - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
-    - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
+      - "traefik.http.services.${PROJECT_NAME}_mailhog.loadbalancer.server.port=8025"
+      - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
 
   traefik:
     image: traefik:v2.0
@@ -120,4 +120,3 @@ volumes:
       type: none
       device: ${PWD}/project
       o: bind
-
