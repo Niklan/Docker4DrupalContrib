@@ -2,10 +2,11 @@
 
 set -eo pipefail
 
-# Clean previous installation.
 cd $APP_ROOT
-find . -mindepth 1 -not -path "./project*" -not -path "./composer.json" -depth -delete
-
+rm composer.json
 touch composer.json
 build-composer-json
 composer -n install
+
+cd $APP_ROOT/web/core
+yarn install --frozen-lockfile
