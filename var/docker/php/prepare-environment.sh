@@ -3,7 +3,7 @@
 set -eo pipefail
 
 cd $APP_ROOT
-rm composer.json
+[ -e composer.json ] && rm composer.json
 touch composer.json
 build-composer-json
 composer -n install
