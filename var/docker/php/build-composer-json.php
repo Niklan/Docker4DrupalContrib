@@ -5,7 +5,11 @@ declare(strict_types=1);
 
 $project_name = getenv('DRUPAL_PROJECT_NAME');
 $path = getenv('DRUPAL_PROJECT_PATH') . '/composer.json';
-$composer_project = json_decode(file_get_contents($path), TRUE);
+
+$composer_project = [];
+if (file_exists($path)) {
+  $composer_project = json_decode(file_get_contents($path), TRUE);
+}
 $composer_default = default_composer();
 
 if (isset($composer_project['require-dev']['drupal/core'])) {

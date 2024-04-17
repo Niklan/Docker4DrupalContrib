@@ -7,8 +7,6 @@ ARG PHP_FPM_GROUP=wodby
 FROM wodby/php:${PHP_TAG} AS base
 
 USER root
-RUN mkdir /var/www/contrib
-RUN chown wodby:wodby /var/www/contrib
 COPY build-composer-json.php /usr/local/bin/build-composer-json
 RUN chown wodby:wodby /usr/local/bin/build-composer-json
 RUN chmod +x /usr/local/bin/build-composer-json
